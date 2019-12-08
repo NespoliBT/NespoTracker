@@ -1,0 +1,113 @@
+// Index.scss
+@import "variables";
+
+body {
+  background: $color4;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(25, 27, 44);
+}
+
+#nuovo {
+  transition: 0.1s ease-in;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border: 0;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: $color4;
+  background: $color2;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    background: #8ff194;
+  }
+}
+
+#tasks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 30px;
+  .task {
+    height: 200px;
+    border-radius: 10px;
+    margin: 10px;
+    min-width: 140px;
+    position: relative;
+    .container {
+      transition: 0.3s ease-in-out;
+      height: 100%;
+      mix-blend-mode: difference;
+      color: #ffffff;
+      h1 {
+        padding: 25px 15px 5px 15px;
+        margin: 0;
+      }
+
+      p {
+        padding: 15px 15px;
+        background: rgba(51, 51, 51, 0.274);
+        min-height: 43%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    }
+    .actions {
+      opacity: 0;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.466);
+      border-radius: 10px;
+
+      .tick {
+        border: 2px solid #50e657;
+        color: #50e657;
+        background: #50e65848;
+        &:hover {
+          background: #50e65873;
+        }
+      }
+      .cross {
+        border: 2px solid #e46666;
+        color: #e46666;
+        background: #f18f8f4b;
+        &:hover {
+          background: #f18f8fb4;
+        }
+      }
+
+      .tick,
+      .cross {
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        margin: 5px;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &:hover {
+      .container {
+        filter: blur(5px);
+      }
+    }
+  }
+}
