@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         <div class="task" id="nuovo" onclick="createNewTask()">+</div>
       `;
   document.getElementById("tasks").innerHTML = tasksHTML;
+  document.onkeydown = KeyPress;
 });
 
 // Quando viene schiacchiato il tasto "➕"
@@ -46,28 +47,26 @@ function createNewTask() {
   document.getElementById("aggiungi").addEventListener("click", function() {
     let titolo = document.getElementById("titolo");
     let descrizione = document.getElementById("desc");
+    let descrizioneFormat = descrizione.value.replace(/\n/g, "<br>");
     color1 = 360 * Math.random();
     color2 = 90 + 70 * Math.random();
     color3 = 80 + 10 * Math.random();
     if (titolo.value && descrizione.value) {
       jsonController.addTask(
         titolo.value,
-        descrizione.value,
+        descrizioneFormat,
         color1,
         color2,
         color3
       );
     }
   });
-  // Crea una nuova finestra
-  // let newTaskWindow = new BrowserWindow({
-  //   width: 350,
-  //   height: 260,
-  //   resizable: false,
-  //   webPreferences: {
-  //     nodeIntegration: true
-  //   }
-  // });
-  // Carica il file html di mio gradimento
-  // newTaskWindow.loadFile("newTask.html");
+}
+
+function KeyPress(e) {
+  var evtobj = window.event ? event : e;
+  if (evtobj.keyCode == 78 && evtobj.ctrlKey) {
+    if (!document.getElementById("tasks").innerHTML.includes("newTask"))
+      createNewTask();
+  }
 }
