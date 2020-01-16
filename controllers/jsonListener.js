@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       jsonData[key].color3 +
       "%)"}">
       ${completato}
-        <div class="container">
-          <h1>${jsonData[key].titolo}</h1>
-          <p>${jsonData[key].descrizione}</p>
+        <div class="container" id="container">
+          <h1 id="titolo">${jsonData[key].titolo}</h1>
+          <p id="descrizione">${jsonData[key].descrizione}</p>
         </div>
         <div class="actions">
           
@@ -36,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
           <p onclick="removeTask(this.id);" id="${
             jsonData[key].id
           }" class="cross">✘</p>
+          <p onclick="modifyTask(this.id);" id="${
+            jsonData[key].id
+          }" class="mod">✎</p>
         </div>
       </div>
     `;
@@ -63,9 +66,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         jsonData[key].color3 +
         "%)"}">
         ${completato}
-          <div class="container">
-            <h1>${jsonData[key].titolo}</h1>
-            <p>${jsonData[key].descrizione}</p>
+        
+          <div class="container" id="container">
+            <h1 id="titolo">${jsonData[key].titolo}</h1>
+            <p id="descrizione">${jsonData[key].descrizione}</p>
           </div>
           <div class="actions">
             
@@ -73,6 +77,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <p onclick="removeTask(this.id);" id="${
               jsonData[key].id
             }" class="cross">✘</p>
+            <p onclick="modifyTask(this.id);" id="${
+              jsonData[key].id
+            }" class="mod">✎</p>
           </div>
         </div>
       `;

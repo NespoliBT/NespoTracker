@@ -2,6 +2,7 @@
 const electron = require("electron");
 const BrowserWindow = electron.remote.BrowserWindow;
 const jsonController = require("./controllers/jsonController");
+
 // Quando il DOM è pronto  ⚡️⚡️⚡️⚡️⚡️
 document.addEventListener("DOMContentLoaded", function(event) {
   let tasksHTML = document.getElementById("tasks").innerHTML;

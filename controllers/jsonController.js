@@ -102,3 +102,86 @@ function completeTask(id) {
     );
   });
 }
+
+function modifyTask(id) {
+  let tasksHTML = document.getElementById("tasks").innerHTML;
+  let taskToModify = document.getElementById(id + "container");
+  let oldBody = document.body.innerHTML;
+
+  let oldTitle = taskToModify.children
+    .namedItem("container")
+    .children.namedItem("titolo").innerHTML;
+
+  let oldDesc = taskToModify.children
+    .namedItem("container")
+    .children.namedItem("descrizione").innerHTML;
+
+  let oldBackground = taskToModify.style.background;
+
+  document.body.innerHTML += `
+  <div class="modifyTask" id="modifyTask">
+    
+    <div class="container" id="container" style="background: ${oldBackground}">
+      <input type="text" id="titolo" placeholder="Titolo" value="${oldTitle}"/>
+      <textarea name="desc" id="desc" placeholder="Descrizione">${oldDesc}</textarea>
+    </div>
+    <div class="aggiungiElimina-container">
+      <button class="chiudiMod" id="chiudiMod">✘</button>
+      <button class="confermaMod" id="${id}">✔</button>
+    </div>
+  </div>
+  `;
+
+  window.setTimeout(function() {
+    document.getElementById("modifyTask").className += " fade-in";
+  });
+
+  document.getElementById("chiudiMod").addEventListener("click", function() {
+    document.body.innerHTML = oldBody;
+  });
+
+  document.querySelector(".confermaMod").addEventListener("click", function() {
+    let jsonData;
+    let id = document.querySelector(".confermaMod").id;
+    let modifiedTask = document
+      .getElementById("modifyTask")
+      .children.namedItem("container");
+
+    let newTitle = modifiedTask.children.namedItem("titolo").value;
+
+    let newDesc = modifiedTask.children.namedItem("desc").value;
+
+    let newDescFormat = newDesc.replace(/\n/g, "<br>");
+
+    fs.readFile("json/Tasks.json", "utf-8", function(err, data) {
+      if (err) throw err;
+      jsonData = JSON.parse(data);
+
+      Object.keys(jsonData).forEach(key => {
+        if (jsonData[key].id == id) {
+          jsonData[key].titolo = newTitle;
+          jsonData[key].descrizione = newDescFormat;
+        }
+      });
+
+      // Cerca di scrivere nel file 🖋
+      fs.writeFile(
+        // File in cui scrivere
+        "json/Tasks.json",
+
+        // Dati da scrivere
+        JSON.stringify(jsonData),
+
+        // Codifica usata per le faccine 😁
+        "utf-8",
+
+        // Se non riesce a scrivere nel file ❌
+        function(err) {
+          if (err) throw err;
+        }
+      );
+    });
+
+    document.body.innerHTML = oldBody;
+  });
+}

@@ -5,6 +5,7 @@ body {
   background: $color4;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(25, 27, 44);
+  margin: 0;
 }
 
 #nuovo {
@@ -101,8 +102,18 @@ body {
         }
       }
 
+      .mod {
+        border: 2px solid #b3b3b3;
+        color: #b3b3b3;
+        background: #ffffff4b;
+        &:hover {
+          background: #ffffffb4;
+        }
+      }
+
       .tick,
-      .cross {
+      .cross,
+      .mod {
         cursor: pointer;
         transition: 0.2s ease-in-out;
         padding: 5px;
@@ -167,48 +178,102 @@ body {
       box-shadow: 0 8px 10px -10px rgb(0, 0, 0);
     }
   }
+}
+
+.modifyTask {
+  display: block;
+  position: fixed;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.486);
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .container {
+    background: white;
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px 0 black;
+    width: 700px;
+    height: 400px;
+    input {
+      font-size: 2em;
+      padding: 25px 15px 5px 15px;
+      background: none;
+      border: 0;
+      outline: 0;
+      display: block;
+      font-size: 4em;
+      font-weight: bold;
+      box-sizing: border-box;
+      height: 124px;
+      padding: 25px 15px 5px 15px;
+      margin: 0;
+      width: 100%;
+    }
+
+    textarea {
+      padding: 15px 15px;
+      background: rgba(51, 51, 51, 0.1);
+      min-height: 43%;
+      resize: none;
+      outline: 0;
+      border: 0;
+      width: 100%;
+      display: block;
+      margin: 0px 0 20px 0;
+      height: 277px;
+      box-sizing: border-box;
+      font-size: 32px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 8px 10px -10px rgb(0, 0, 0);
+    }
+  }
   .aggiungiElimina-container {
     transition: 0.1s ease-in-out;
-    opacity: 0;
-    position: absolute;
-    bottom: 22px;
-    right: 14px;
+    opacity: 1;
     display: flex;
-    justify-content: space-evenly;
-    width: 220px;
+    justify-content: center;
+    width: 100%;
   }
-  .aggiungi,
-  .elimina {
+  .confermaMod,
+  .chiudiMod {
     transition: 0.2s ease-in;
     border: 0;
-    font-size: 14px;
+    font-size: 26px;
     outline: none;
     margin: 0;
     background: none;
+    margin: 10px;
     padding: 0;
-    padding: 5px 10px;
+    padding: 10px 10px;
     box-sizing: content-box;
-    height: 20px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 2000px;
   }
-  .aggiungi {
+  .confermaMod {
     border: 2px solid #50e657;
     color: #50e657;
-    background: #50e65848;
+    background: #afebb248;
     &:hover {
-      background: #50e65873;
+      background: #93ee9873;
     }
   }
-  .elimina {
+  .chiudiMod {
     border: 2px solid #e46666;
     color: #e46666;
-    background: #ecc7c7;
+    background: #ecc7c748;
     &:hover {
-      background: #ecb2b2;
+      background: #ecb2b273;
     }
   }
   &:hover {
@@ -216,4 +281,8 @@ body {
       opacity: 1;
     }
   }
+}
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
