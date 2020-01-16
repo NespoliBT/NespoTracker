@@ -224,6 +224,73 @@ body {
           box-shadow: 0 8px 10px -10px black;
 }
 
+.newTask .aggiungiElimina-container {
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+  opacity: 0;
+  position: absolute;
+  bottom: 22px;
+  right: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 220px;
+}
+
+.newTask .aggiungi,
+.newTask .elimina {
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+  border: 0;
+  font-size: 14px;
+  outline: none;
+  margin: 0;
+  background: none;
+  padding: 0;
+  padding: 5px 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 20px;
+  width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2000px;
+}
+
+.newTask .aggiungi {
+  border: 2px solid #50e657;
+  color: #50e657;
+  background: #50e65848;
+}
+
+.newTask .aggiungi:hover {
+  background: #50e65873;
+}
+
+.newTask .elimina {
+  border: 2px solid #e46666;
+  color: #e46666;
+  background: #ecc7c7;
+}
+
+.newTask .elimina:hover {
+  background: #ecb2b2;
+}
+
+.newTask:hover .aggiungiElimina-container {
+  opacity: 1;
+}
+
 .modifyTask {
   display: block;
   position: fixed;
