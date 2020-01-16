@@ -116,6 +116,8 @@ function modifyTask(id) {
     .namedItem("container")
     .children.namedItem("descrizione").innerHTML;
 
+  let oldDescFormat = oldDesc.replace("<br>", "\n");
+
   let oldBackground = taskToModify.style.background;
 
   document.body.innerHTML += `
@@ -123,7 +125,7 @@ function modifyTask(id) {
     
     <div class="container" id="container" style="background: ${oldBackground}">
       <input type="text" id="titolo" placeholder="Titolo" value="${oldTitle}"/>
-      <textarea name="desc" id="desc" placeholder="Descrizione">${oldDesc}</textarea>
+      <textarea name="desc" id="desc" placeholder="Descrizione">${oldDescFormat}</textarea>
     </div>
     <div class="aggiungiElimina-container">
       <button class="chiudiMod" id="chiudiMod">✘</button>
