@@ -26,8 +26,8 @@ function createNewTask() {
       <button class="aggiungi" id="aggiungi">Aggiungi!</button>
     </div>
     <div class="container" id="container">
-      <input type="text" id="titolo" placeholder="Titolo" />
-      <textarea name="desc" id="desc" placeholder="Descrizione"></textarea>
+      <input type="text" id="titoloNew" placeholder="Titolo" />
+      <textarea name="desc" id="descNew" placeholder="Descrizione"></textarea>
     </div>
     <input type="hidden" name="color1" />
     <input type="hidden" name="color2" />
@@ -46,8 +46,8 @@ function createNewTask() {
     document.getElementById("nuovo").style.display = "flex";
   });
   document.getElementById("aggiungi").addEventListener("click", function() {
-    let titolo = document.getElementById("titolo");
-    let descrizione = document.getElementById("desc");
+    let titolo = document.getElementById("titoloNew");
+    let descrizione = document.getElementById("descNew");
     let descrizioneFormat = descrizione.value.replace(/\n/g, "<br>");
     color1 = 360 * Math.random();
     color2 = 90 + 70 * Math.random();
